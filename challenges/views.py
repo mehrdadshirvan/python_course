@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
 
+
 monthly_challenges_dic = {
     'jan': 'january',
     'feb': 'february',
@@ -40,8 +41,13 @@ def monthly_challenges_by_number(request, month):
 def monthly_challenges(request, month):
     try:
         text = monthly_challenges_dic[month]
-        res = f"<h1>{text}</h1>"
-        return HttpResponse(res)
+        context = {
+            "text" : text,
+            "name" : month
+        }
+        return render(request, "challenges\challenge.html",context)
+        # res = f"<h1>{text}</h1>"
+        # return HttpResponse(res)
     except:
         return HttpResponseNotFound("page not found")
 
