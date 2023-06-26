@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
+
 monthly_challenges_dic = {
     'jan': 'january',
     'feb': 'february',
