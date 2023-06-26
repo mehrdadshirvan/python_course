@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
-def january(request):
-    return HttpResponse('january')
-
-def sunday(request):
-    return HttpResponse('sunday')
-
-
-def march(request):
-    return HttpResponse('march')
-
+# def january(request):
+#     return HttpResponse('january')
+#
+# def sunday(request):
+#     return HttpResponse('sunday')
+#
+#
+# def march(request):
+#     return HttpResponse('march')
+def monthly_challenges_by_number(request, month):
+    return HttpResponse(month)
 
 def monthly_challenges(request, month):
     text = '';
