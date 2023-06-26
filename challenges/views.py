@@ -1,25 +1,34 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
-# def january(request):
-#     return HttpResponse('january')
-#
-# def sunday(request):
-#     return HttpResponse('sunday')
-#
-#
-# def march(request):
-#     return HttpResponse('march')
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+
+monthly_challenges_dic = {
+    'jan': 'january',
+    'feb': 'february',
+    'mar': 'march',
+    'apr': 'april',
+    'may': 'may',
+    'jun': 'june',
+    'jul': 'july',
+    'aug': 'august',
+    'sep': 'september',
+    'oct': 'october',
+    'nov': 'november',
+    'dec': 'december',
+}
+
 def monthly_challenges_by_number(request, month):
-    return HttpResponse(month)
+    months = list(monthly_challenges_dic.keys())
+    if (month-1) > len(months):
+        return HttpResponseNotFound("invalid month")
+
+    redirect_month = months[month-1]
+    return HttpResponseRedirect('/challenges/'+redirect_month)
 
 def monthly_challenges(request, month):
-    text = '';
-    if month == 'january' :
-        text = 'january 1'
-    elif month == 'feb':
-        text = 'feb 2'
-    else:
-        text = 'month not found!'
-    return HttpResponse(text)
+    try:
+        text = monthly_challenges_dic[month]
+        return HttpResponse(text)
+    except:
+        return HttpResponseNotFound("page not found")
+
 
