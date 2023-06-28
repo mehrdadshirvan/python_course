@@ -13,7 +13,7 @@ monthly_challenges_dic = {
     'jul': 'july',
     'aug': 'august',
     'sep': 'september',
-    'oct': 'october',
+    'oct': '',
     'nov': 'november',
     'dec': 'december',
 }
